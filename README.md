@@ -10,10 +10,9 @@ Shows
 - use of twitter bootstrap and backbone together
 - a panel stack
 - event based switching of panels
-- event based, real time updating of multiple panels
-- 
+- event based and real time updating of multiple panels
 
-todo
+Todo
 ====
 
 - change sync impl when client is run from file:// instead of http(s)://
