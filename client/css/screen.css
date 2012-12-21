@@ -1,0 +1,33 @@
+li {
+	list-style: none;
+}
+
+fieldset button {
+	width: 50%;
+}
+
+footer {
+	display: block;
+	width: 90%;
+	text-align: center;
+}
+
+#content{
+	position: relative;
+	margin-top: 0.2em;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	color: inherit;
+	font-size: 18px;
+	font-weight: 200;
+	line-height: 30px;
+	margin-bottom: 30px;
+	padding: 60px;	
+}
+
+#content h1 {
+	font-size: 1.1em;
+}
+
+
