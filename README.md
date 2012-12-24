@@ -15,6 +15,7 @@ Shows
 Todo
 ====
 
+- jsdoc
 - change sync impl when client is run from file:// instead of http(s)://
 - use momentjs for datetime handling
 - use datepicker/calendar for date
@@ -22,6 +23,6 @@ Todo
 - add range validator to duration and distance
 - change submit handling so validation demands focus on form panel
 - list as table with sorting and paging and searching
-- auth
+- authenticatiom
 - reports with graphs
 
