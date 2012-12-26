@@ -8,9 +8,9 @@ Shows
 
 - use of backbone-forms plugin
 - use of twitter bootstrap and backbone together
-- a panel stack
-- event based switching of panels
-- event based and real time updating of multiple panels
+- a panel stack with event based switching of panels
+- event based and real time updating of contents of multiple panels
+- validation of form and model data
 
 Todo
 ====
@@ -20,9 +20,7 @@ Todo
 - use momentjs for datetime handling
 - use datepicker/calendar for date
 - split duration into multiple components
-- add range validator to duration and distance
-- change submit handling so validation demands focus on form panel
 - list as table with sorting and paging and searching
-- authenticatiom
+- authentication
 - reports with graphs
 
