@@ -22,11 +22,12 @@ describe("EST.ActivitiesListView", function() {
 			var lies = $(view.el).find("li");
 
 			expect(lies.size()).toEqual(4);
-			//expect(lies.first().html()).toEqual("<a>One</a>");			
+			//expect(lies.first().html()).toEqual("<a>One</a>");
 		});
 
 	});
-	
+
+	/*
 	describe("#initialize", function() {
 
 		it("should render on collection.add", function() {
@@ -38,5 +39,6 @@ describe("EST.ActivitiesListView", function() {
 		});
 
 	});
+	*/
 
 });
