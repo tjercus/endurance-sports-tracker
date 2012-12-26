@@ -16,10 +16,26 @@ EST.Activity = Backbone.Model.extend({
 				options: ["running", "swimming", "cycling", "walking"],
 			},
 			duration: { type: 'Number', validators: ['required'] },	// @todo create a Duration custom editor
-			distance: "Number",
+			distance: { type: 'Number', validators: ['required'] },
 			notes: "TextArea",
 			date: "Date" // @todo overwrite the getValue of this editor to return a Number
 		},
+
+		validate: function(attrs) {
+			var errors = {};
+            if (parseInt(attrs.duration) <= 0) {
+            	errors.duration = 'duration should be bigger than zero';
+            }
+            if (parseInt(attrs.distance) <= 0) {
+            	errors.distance = 'distance should be bigger than zero';
+            }
+            if (!_.isDate(attrs.date)) {
+               	errors.date = 'date is not a valid date';
+            }
+            if (errors.duration || errors.distance|| errors.date) {
+            	return errors;
+            }
+        },
 
 		getDateFormatted: function () {
 			var raw = this.get("date");

@@ -50,11 +50,14 @@
 
 		handleSaveButton: function(obj) {
 			console.log("handleSaveButton started");
-			obj.commit(); // update form to model,
-			//activity.save(); // POST model to url or store on localhost
-			EST.activities.add(obj.model); // @todo use eventbus instead of direct coupling
-			console.log(JSON.stringify(obj.model));
-			console.log("new collection size: " + EST.activities.length);
-			obj.reset();
+
+			var errs = obj.commit(); // update form to model,
+			if (_.isEmpty(errs)) {
+				//activity.save(); // POST model to url or store on localhost
+				EST.activities.add(obj.model); // @todo use eventbus instead of direct coupling
+				console.log(JSON.stringify(obj.model));
+				console.log("new collection size: " + EST.activities.length);
+				obj.reset();
+			}
 		}
 	});

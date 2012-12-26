@@ -1,6 +1,6 @@
-describe("EST.form", function() {
+describe("EST.FormView", function() {
 
-	describe("form", function() {
+	describe("#render", function() {
 
 		it("should show model values in it's DOM element", function() {
         	EST.myForm = new EST.FormView({model: new EST.Activity({"duration": 321, "distance": 123})});
@@ -14,21 +14,26 @@ describe("EST.form", function() {
 
             expect($(el).find("#c0_duration").val()).toEqual('321');
             expect($(el).find("#c0_distance").val()).toEqual('123');
-         });
+        });
+     });
 
-		it("should keep values after panel is switched out and in", function() {
-			EST.myForm = new EST.FormView({model: new EST.Activity({duration: 66})});
+     describe("events", function() {
 
-			expect(EST.myForm.model.get("duration")).toEqual(66);
+			it("should keep values after panel is switched out and in", function() {
+				EST.myForm = new EST.FormView({model: new EST.Activity({duration: 66})});
 
-			// choose another panel
-			EST.trigger("navigation:changed", "activities");
+				expect(EST.myForm.model.get("duration")).toEqual(66);
 
-			// set panel back to post
-			EST.trigger("navigation:changed", "postnew");
+				// choose another panel
+				EST.trigger("navigation:changed", "activities");
 
-			expect(EST.myForm.model.get("duration")).toEqual(66);
-		});
+				// set panel back to post
+				EST.trigger("navigation:changed", "postnew");
+
+				expect(EST.myForm.model.get("duration")).toEqual(66);
+			});
+
+			it("should not navigate away when there are validation errors", function() {});
 /*
 		it("should clear values after form is submitted", function() {
 			EST.myForm = new EST.FormView({model: new EST.Activity({"duration": 321, "distance": 123})});
