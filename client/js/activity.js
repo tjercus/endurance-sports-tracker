@@ -45,8 +45,13 @@ EST.Activity = Backbone.Model.extend({
 		getDistanceFormatted: function () {
 			return (this.get("distance") / 1000) + "km";
 		},
+		
+		// @todo proper impl.
+		//getPaceFormatted: function() {
+			//return EST.Datum.secondsToTime(parseInt(this.get("duration")) / parseInt(this.get("distance") / 1000));
+		//},
 
 		toJSONFormatted: function() {
-			return {"date": this.getDateFormatted(), "type": this.get("type"), distance: this.getDistanceFormatted()};
+			return {"date": this.getDateFormatted(), "type": this.get("type"), "distance": this.getDistanceFormatted()/*, "pace": this.getPaceFormatted()*/};
 		}
 });

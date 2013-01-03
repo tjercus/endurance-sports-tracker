@@ -1,5 +1,4 @@
 
-	// @todo update view when an item is added to collection
 	EST.ActivitiesListView = Backbone.View.extend({
 		tagName: "ul",
 		className: "nav nav-tabs nav-stacked",
@@ -17,8 +16,6 @@
 		},
 
 		render: function () {
-			//var that = this;
-
 			var els = [];
 			this.collection.each(function (act) {
 				console.log("act: " + act);

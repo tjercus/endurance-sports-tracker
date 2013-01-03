@@ -17,6 +17,6 @@
 		},
 		
 		comparator: function(item) {
-        	return item.get("id");
+        	return item.get("cid");// || item.get("cid");
     	}
 	});
