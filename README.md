@@ -23,4 +23,6 @@ Todo
 - list as table with sorting and paging and searching
 - authentication
 - reports with graphs
+- 'export data as json' feature
+- filters on reports
 

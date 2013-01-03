@@ -14,5 +14,9 @@
 				'totalDistance': (totalDistance / 1000) + "km",
 				'totalDuration': EST.Datum.secondsToTime(totalDuration)
 			};
-		}
+		},
+		
+		comparator: function(item) {
+        	return item.get("id");
+    	}
 	});
