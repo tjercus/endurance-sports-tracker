@@ -12,7 +12,8 @@
 			});
 			return {
 				'totalDistance': (totalDistance / 1000) + "km",
-				'totalDuration': EST.Datum.secondsToTime(totalDuration)
+				'totalDuration': EST.Datum.secondsToTime(totalDuration),
+				'totalAveragePace': EST.Datum.secondsToTime( totalDuration / (totalDistance / 1000), true )
 			};
 		},
 		

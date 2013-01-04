@@ -2,7 +2,9 @@
 	EST.ReportsView = Backbone.View.extend({
 		template: "<h1>Reports</h1>" +
 		"<ul><li>Total distance: <%= totalDistance %></li>"+
-		"<li>Total duration: <%= totalDuration %></li></ul>",
+		"<li>Total duration: <%= totalDuration %></li>" +
+		"<li>Total average pace: <%= totalAveragePace %></li>" +
+		"</ul>",
 
 		initialize: function () {
 			var that = this;
