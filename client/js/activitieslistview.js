@@ -1,7 +1,10 @@
 
 	EST.ActivitiesListView = Backbone.View.extend({
-		tagName: "ul",
-		className: "nav nav-tabs nav-stacked",
+		tagName: "table",
+		className: "table table-striped",
+		
+		theadTemplate: "<thead><tr><th>Date</th><th>Type</th><th>Distance</th><th>Duration</th><th>Pace</th></tr></thead><tbody>",
+		tfootTemplate: "</tbody>",
 
 		initialize: function () {
 			var that = this;
@@ -18,13 +21,20 @@
 		render: function () {
 			var els = [];
 			this.collection.each(function (act) {
-				console.log("act: " + act);
+				console.log("act: " + JSON.stringify(act));
 				var itemView = new EST.ActivityListItemView({
 					model: act
 				});
-				els.push(itemView.render().el);
-			});
-			this.$el.html(els);
+				var elRendered = itemView.render().el;
+				console.log("een rij: " + $(elRendered).html());
+				els.push(elRendered);
+			});			
+			console.log("tabel: " + this.theadTemplate + els.join("") + this.tfootTemplate);
+			
+			this.$el.html(this.theadTemplate);
+			this.$el.append(els);
+			this.$el.append(this.tfootTemplate);
+
 			return this;
 		}
 	});

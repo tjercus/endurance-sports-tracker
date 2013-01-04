@@ -5,14 +5,21 @@
 		},
 
 		// @todo add days
-		secondsToTime: function(secs) {
+		secondsToTime: function(secs, skipHours) {
 			var SEP = ":";
 			var hours = Math.floor(secs / (60 * 60));
 			var divisor_for_minutes = secs % (60 * 60);
 			var minutes = Math.floor(divisor_for_minutes / 60);
 			var divisor_for_seconds = divisor_for_minutes % 60;
 			var seconds = Math.ceil(divisor_for_seconds);
-			return hours + SEP + minutes + SEP + seconds;
+			
+			var paddedHours = "";			
+			if (skipHours != true) {
+				paddedHours = this.lpad(hours, 2) + SEP;
+			}
+						
+			var str = paddedHours + this.lpad(minutes, 2) + SEP + this.lpad(seconds, 2);
+			return str;
 		},
 
 		formatDate: function(date) {
@@ -25,5 +32,15 @@
 
 			console.log("out was: " + out + ", from: " + date);
 			return out;
+		},
+		
+		lpad: function(value, padding) {
+		    var zeroes = "0";
+
+    		for (var i = 0; i < padding; i++) { 
+    			zeroes += "0"; 
+    		}
+    		return (zeroes + value).slice(padding * -1);
 		}
+
 	}

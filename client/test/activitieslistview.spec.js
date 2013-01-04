@@ -19,10 +19,9 @@ describe("EST.ActivitiesListView", function() {
 	describe("#render", function() {
 
 		it("should render a list", function() {
-			var lies = $(view.el).find("li");
+			var lies = $(view.el).find("tr");
 
-			expect(lies.size()).toEqual(4);
-			//expect(lies.first().html()).toEqual("<a>One</a>");
+			expect(lies.size()).toEqual(5); // thead>tr == 1 + tbody>th == 4 
 		});
 
 	});
