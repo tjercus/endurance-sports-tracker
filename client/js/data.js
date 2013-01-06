@@ -4,6 +4,41 @@ window.EST = window.EST || {};
 EST.data = [
 {
 	type: "running",
+	date: "26122012",
+	duration: 1661,
+	distance: 5990,
+	notes: "Sub HMP"
+},
+{
+	type: "running",
+	date: "27122012",
+	duration: 3041,
+	distance: 9130,
+	notes: "Easy"
+},
+{
+	type: "running",
+	date: "27122012",
+	duration: 280,
+	distance: 1000,
+	notes: "Sub MP"
+},
+{
+	type: "running",
+	date: "28122012",
+	duration: 2837,
+	distance: 10000,
+	notes: "Sub MP, hill intervals"
+},
+{
+	type: "running",
+	date: "29122012",
+	duration: 920,
+	distance: 2500,
+	notes: "Easy"
+},
+{
+	type: "running",
 	date: "30122012",
 	duration: 1673,
 	distance: 5990,
@@ -56,6 +91,20 @@ EST.data = [
 	date: "04012013",
 	duration: 383,
 	distance: 1080,
+	notes: "Easy"
+},
+{
+	type: "running",
+	date: "04012013",
+	duration: 4195,
+	distance: 13270,
+	notes: "net geen MP"
+},
+{
+	type: "running",
+	date: "05012013",
+	duration: 720,
+	distance: 1900,
 	notes: "Easy"
 }
 ];
