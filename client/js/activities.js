@@ -11,9 +11,12 @@
 				totalDuration += parseInt(act.get('duration'));
 			});
 			return {
+				'totalNrOfActivities': this.length,
 				'totalDistance': (totalDistance / 1000) + "km",
 				'totalDuration': EST.Datum.secondsToTime(totalDuration),
-				'totalAveragePace': EST.Datum.secondsToTime( totalDuration / (totalDistance / 1000), true )
+				'totalAveragePace': EST.Datum.secondsToTime( totalDuration / (totalDistance / 1000), true ),
+				'totalAverageDistance': ((totalDistance / this.length) / 1000).toFixed(2) + "km",
+				'totalAverageDuration': EST.Datum.secondsToTime(totalDuration / this.length),
 			};
 		},
 		

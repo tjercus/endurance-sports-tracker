@@ -22,12 +22,16 @@
 			return str;
 		},
 
+		/**
+		* @param date as Date object or numeric representation as: 12232012 (mmddyyyy)
+		* @return a String with a NL date
+		*/
 		formatDate: function(date) {
 			var out = date, SEP = "-";
 			if (_.isString(date)) {
 				out = date.substr(0, 2) + SEP + date.substr(2, 2) + SEP + date.substr(4, 4);
 			} else {
-				out = date.getDate() + SEP + (date.getMonth() + 1) + SEP + date.getFullYear();
+				out = this.lpad(date.getDate()) + SEP + this.lpad((date.getMonth() + 1)) + SEP + date.getFullYear();
 			}
 
 			console.log("out was: " + out + ", from: " + date);
