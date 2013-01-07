@@ -106,5 +106,12 @@ EST.data = [
 	duration: 720,
 	distance: 1900,
 	notes: "Easy"
+},
+{
+	type: "running",
+	date: "07012013",
+	duration: 5830,
+	distance: 19300,
+	notes: "Net onder MP"
 }
 ];
