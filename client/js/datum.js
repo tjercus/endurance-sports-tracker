@@ -21,6 +21,17 @@
 			var str = paddedHours + this.lpad(minutes, 2) + SEP + this.lpad(seconds, 2);
 			return str;
 		},
+		
+		timeToSeconds: function(time) {
+			if (time === undefined || (time.indexOf(":") === -1)) {
+				return time;
+			}
+			var components = time.split(":");			
+			if (components.length === 3) {
+				time = parseInt(components[0] * 3600) + parseInt(components[1] * 60) + parseInt(components[2]);
+			}
+			return time;
+		},
 
 		/**
 		* @param date as Date object or numeric representation as: 12232012 (mmddyyyy)

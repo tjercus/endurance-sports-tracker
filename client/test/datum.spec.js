@@ -12,6 +12,14 @@ describe("EST.Datum", function() {
 			expect(time).toEqual("02:03");
 		});
 	});
+	
+	describe("#timeToSeconds", function() {
+		it("should convert timecomponents to seconds", function() {
+			var time = "13:02:59";
+			var seconds = EST.Datum.timeToSeconds(time);
+			expect(seconds).toEqual(46979);
+		});		
+	});
 
 	describe("#formatDate", function() {
     	it("should accept a Date object", function() {

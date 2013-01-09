@@ -113,5 +113,27 @@ EST.data = [
 	duration: 5830,
 	distance: 19300,
 	notes: "Net onder MP"
-}
+},
+{
+	type: "running",
+	date: "08012013",
+	duration: EST.Datum.timeToSeconds("00:06:30"),
+	distance: 1080,
+	notes: "Easy"
+},
+{
+	type: "running",
+	date: "08012013",
+	duration: EST.Datum.timeToSeconds("00:56:30"),
+	distance: 10080,
+	notes: "Easy"
+},
 ];
+/*
+function fixData(act) {
+	console.log('fixData');
+	var dur = act.get("duration");
+	act.set("duration", EST.Datum.timeToSeconds(dur));
+}
+_.invoke(EST.Data, 'fixData');
+*/
