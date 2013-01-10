@@ -128,6 +128,20 @@ EST.data = [
 	distance: 10080,
 	notes: "Easy"
 },
+{
+	type: "running",
+	date: "08012013",
+	duration: EST.Datum.timeToSeconds("00:05:59"),
+	distance: 1080,
+	notes: "Easy"
+},
+{
+	type: "running",
+	date: "10012013",
+	duration: EST.Datum.timeToSeconds("01:00:03"),
+	distance: 13270,
+	notes: "MP + intervals in 10KP"
+},
 ];
 /*
 function fixData(act) {
