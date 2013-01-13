@@ -23,6 +23,8 @@
 
 	console.log("reportsview is created");
 	
+	EST.filterFormView = new EST.FilterFormView({});
+	
 	EST.reportsFilteredView = new EST.ReportsView({
 		collection: EST.activities
 	});

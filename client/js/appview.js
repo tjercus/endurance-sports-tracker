@@ -34,6 +34,7 @@
 			console.log("AppView.init. form added to content element");
 
 			$(EST.reportsPanel.el).append(EST.reportsView.render().el);
+			$(EST.reportsPanel.el).append(EST.filterFormView.render().el);
 			$(EST.reportsPanel.el).append(EST.reportsFilteredView.render().el);
 
 			console.log("AppView.init. views rendered and added to panels");
