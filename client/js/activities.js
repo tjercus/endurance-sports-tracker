@@ -3,10 +3,18 @@
 		url: "activities.groovy",
 		model: EST.Activity,
 						
-		initialize: function() {
-			this.on('add', function() {
-				EST.trigger("activities:changed", _.clone(this.models));
-			});
+		initialize: function(options) {
+			var that = this;			
+			
+			if (options && options.shouldFilter) {
+				EST.bind("filter:change", function(filter) {
+					that.applyFilters(filter);
+				});
+			} else {
+				this.on('add', function() {
+					EST.trigger("activities:changed", _.clone(this.models));
+				});
+			}
 		},
 
 		getData: function() {			
@@ -26,7 +34,9 @@
 			};			
 		},
 		
-		filterTest: function() {
+		applyFilters: function(filter) {
+			// @todo apply filter model object to collection
+			/*
 			var filtered = [];
 			this.each(function(act) {
 				console.log("blah: " + act.get('date'));
@@ -34,7 +44,9 @@
 					filtered.push(act);
 				}
 			});
-			console.dir(filtered);
+			this.reset(filtered);
+			*/
+			console.log("applying filters is being implemented");
 		},
 		
 		comparator: function(item) {

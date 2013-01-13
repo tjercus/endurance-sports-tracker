@@ -2,6 +2,8 @@
 	//Backbone.Form.editors.Date.monthNames = ["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"];
 
 	EST.activities = new EST.Activities(EST.data);
+	
+	EST.filteredActivities = new EST.Activities({"shouldFilter": true});
 
 	console.log("activities is created");
 
@@ -23,10 +25,12 @@
 
 	console.log("reportsview is created");
 	
-	EST.filterFormView = new EST.FilterFormView({});
+	EST.filterFormView = new EST.FilterFormView({
+		model: new EST.Filter()
+	});
 	
 	EST.reportsFilteredView = new EST.ReportsView({
-		collection: EST.activities
+		collection: EST.filteredActivities
 	});
 
 	console.log("reportsfilteredview is created");

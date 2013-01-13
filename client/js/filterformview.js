@@ -9,12 +9,14 @@ EST.FilterFormView = Backbone.View.extend({
 	},
 	
 	initialize: function() {
-	
+		// @todo pehaps use backbone.modelbinder
+		_.bindAll(this, "handleOnlyCurrentWeekChange");
 	},
 	
 	handleOnlyCurrentWeekChange: function(evt) {
 		console.log("toggle only current week");
-		// @todo EST.trigger("onlycurrentweek:change", state);
+		this.model.set({"onlyCurrentWeek": true}); // @todo het actual state from input field
+		EST.trigger("filter:change", this.model);
 	},
 	
 	render: function() {
