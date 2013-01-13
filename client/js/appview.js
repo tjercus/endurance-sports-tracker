@@ -2,7 +2,11 @@
 	EST.AppView = Backbone.View.extend({
 
 		initialize: function () {
-
+		
+			EST.bind("activities:changed", function(filteredActivities) {
+				EST.reportsFilteredView.collection.reset(filteredActivities);
+			});
+			
 			EST.activitiesPanel = new EST.PanelView({
 				panelName: "activities"
 			});
@@ -30,6 +34,7 @@
 			console.log("AppView.init. form added to content element");
 
 			$(EST.reportsPanel.el).append(EST.reportsView.render().el);
+			$(EST.reportsPanel.el).append(EST.reportsFilteredView.render().el);
 
 			console.log("AppView.init. views rendered and added to panels");
 

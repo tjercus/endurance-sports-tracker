@@ -22,6 +22,12 @@
 	});
 
 	console.log("reportsview is created");
+	
+	EST.reportsFilteredView = new EST.ReportsView({
+		collection: EST.activities
+	});
+
+	console.log("reportsfilteredview is created");
 
 	EST.appView = new EST.AppView({
 		el: $("body")

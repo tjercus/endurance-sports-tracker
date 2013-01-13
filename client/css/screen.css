@@ -29,5 +29,9 @@ footer {
 #content h1 {
 	font-size: 1.1em;
 }
+td.numeric {
+	text-align: right;
+	/*padding-right: 8em;*/
+}
 
 
