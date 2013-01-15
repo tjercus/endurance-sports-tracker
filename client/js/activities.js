@@ -3,16 +3,24 @@
 		url: "activities.groovy",
 		model: EST.Activity,
 						
-		initialize: function(options) {
+		initialize: function(models, options) {
 			var that = this;			
 			
 			if (options && options.shouldFilter) {
-				EST.bind("filter:change", function(filter) {
+				// applicable for the filtered activities collection
+				EST.bind("filter:changed", function(filter) {
+					console.log("EST.Activities caught filter:changed");
 					that.applyFilters(filter);
 				});
+				EST.bind("activities:changed", function(activities) {
+					console.log("EST.Activities caught activities:changed, cloning activities collection to filteredactivities collection");
+					that.reset(activities);
+				});
 			} else {
-				this.on('add', function() {
+				// applicable for the main activities collection, unfiltered
+				this.on("add remove reset", function() {
 					EST.trigger("activities:changed", _.clone(this.models));
+					console.log("EST.Activities trigger activities:changed");
 				});
 			}
 		},
@@ -35,18 +43,20 @@
 		},
 		
 		applyFilters: function(filter) {
-			// @todo apply filter model object to collection
-			/*
+			if (this.length <= 1) {
+				this.reset(EST.activities);
+			}
+			// @todo read filter model object, and apply all filters on same cumulative array
 			var filtered = [];
 			this.each(function(act) {
-				console.log("blah: " + act.get('date'));
-				if (act.get('date') == '08012013') {
+				//console.log("blah: " + act.get('date'));
+				if (EST.Datum.sameWeek(EST.Datum.createDate(), act.get("date"))) {
 					filtered.push(act);
 				}
 			});
 			this.reset(filtered);
-			*/
-			console.log("applying filters is being implemented");
+			
+			console.log("experimental filter is being applied");
 		},
 		
 		comparator: function(item) {

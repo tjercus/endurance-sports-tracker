@@ -1,11 +1,7 @@
 
 	EST.AppView = Backbone.View.extend({
 
-		initialize: function () {
-		
-			EST.bind("activities:changed", function(filteredActivities) {
-				EST.reportsFilteredView.collection.reset(filteredActivities);
-			});
+		initialize: function () {			
 			
 			EST.activitiesPanel = new EST.PanelView({
 				panelName: "activities"
@@ -23,15 +19,9 @@
 			contentEl.append(EST.reportsPanel.el);
 			contentEl.append(EST.postnewPanel.el);
 
-			console.log("AppView.init. panels added to content element");
-
 			$(EST.activitiesPanel.el).append(EST.activitiesListView.render().el);
 
-			console.log("AppView.init. activitiesListView added to content element");
-
 			$(EST.postnewPanel.el).append(EST.form.render().el);
-
-			console.log("AppView.init. form added to content element");
 
 			$(EST.reportsPanel.el).append(EST.reportsView.render().el);
 			$(EST.reportsPanel.el).append(EST.filterFormView.render().el);
@@ -43,9 +33,8 @@
 				el: $("ul.nav")
 			});
 
-			console.log("AppView.init. navbar added");
-
 			// set default panel state
 			EST.trigger("navigation:changed", "activities");
+			//EST.trigger("activities:changed", EST.activities);
 		}
 	});

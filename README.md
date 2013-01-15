@@ -20,9 +20,8 @@ Todo
 - use momentjs for datetime handling
 - use datepicker/calendar for date
 - split duration into multiple components
-- list as table with sorting and paging and searching
 - authentication
 - reports with graphs
 - 'export data as json' feature
-- filters on reports
+- add calculated property to Activity showing percentage of some configurable pace (ex: MP)
 

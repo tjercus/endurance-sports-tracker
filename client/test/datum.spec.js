@@ -40,4 +40,37 @@ describe("EST.Datum", function() {
 			expect(nr).toEqual('01');
 		});
 	});
+	
+	describe("#sameWeek", function() {
+		it("should return true if same date", function() {
+			var date1 = "18051976";
+			var date2 = "18051976";
+			expect(EST.Datum.sameWeek(date1, date2)).toBeTruthy();
+		});
+		it("should return true if a week bridges two years", function() {
+			var date1 = "31122012";
+			var date2 = "01012013";
+			expect(EST.Datum.sameWeek(date1, date2)).toBeTruthy();
+		});
+		it("should return true if a week bridges two months", function() {
+			var date1 = "31012013";
+			var date2 = "02022013";
+			expect(EST.Datum.sameWeek(date1, date2)).toBeTruthy();
+		});
+		it("should return false if two dates are between and after a sunday", function() {
+			var date1 = "05012013";
+			var date2 = "07012013";
+			expect(EST.Datum.sameWeek(date1, date2)).toBeFalsy();
+		});
+		it("should return false if two dates are before and on a sunday", function() {
+			var date1 = "05012013";
+			var date2 = "06012013";
+			expect(EST.Datum.sameWeek(date1, date2)).toBeFalsy();
+		});
+		it("should return false if two dates are on a sunday and after", function() {
+			var date1 = "06012013";
+			var date2 = "07012013";
+			expect(EST.Datum.sameWeek(date1, date2)).toBeTruthy();
+		});
+	});
 });

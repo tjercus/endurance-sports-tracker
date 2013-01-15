@@ -111,7 +111,7 @@ EST.data = [
 	type: "running",
 	date: "07012013",
 	duration: 5830,
-	distance: 19300,
+	distance: 19570,
 	notes: "Net onder MP"
 },
 {
@@ -142,7 +142,6 @@ EST.data = [
 	distance: 13270,
 	notes: "MP + intervals in 10KP"
 },
-
 {
 	type: "running",
 	date: "11012013",
@@ -156,6 +155,27 @@ EST.data = [
 	duration: EST.Datum.timeToSeconds("01:05:50"),
 	distance: 13270,
 	notes: "MP"
+},
+{
+	type: "running",
+	date: "12012013",
+	duration: EST.Datum.timeToSeconds("00:06:40"),
+	distance: 1080,
+	notes: "Easy"
+},
+{
+	type: "running",
+	date: "12012013",
+	duration: EST.Datum.timeToSeconds("01:32:14"),
+	distance: 19570,
+	notes: "Ruim onder MP"
+},
+{
+	type: "running",
+	date: "13012013",
+	duration: EST.Datum.timeToSeconds("00:06:10"),
+	distance: 1080,
+	notes: "Easy"
 }
 ];
 /*

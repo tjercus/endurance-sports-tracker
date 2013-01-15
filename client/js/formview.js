@@ -24,8 +24,6 @@
 		},
 
 		reset: function () {
-			//$(this.el)[0].reset();
-			console.log("before: " + JSON.stringify(this.model.attributes));
 			this.model.clear();
 			this.model = new EST.Activity();
 
@@ -45,7 +43,7 @@
 			this.setValue({
 				"notes": this.model.get('notes')
 			});
-			console.log("after: " + JSON.stringify(this.model.attributes));
+			//console.log("after: " + JSON.stringify(this.model.attributes));
 		},
 
 		handleSaveButton: function(obj) {
@@ -55,8 +53,7 @@
 			if (_.isEmpty(errs)) {
 				//activity.save(); // POST model to url or store on localhost
 				EST.activities.add(obj.model); // @todo use eventbus instead of direct coupling
-				console.log(JSON.stringify(obj.model));
-				console.log("new collection size: " + EST.activities.length);
+				//console.log("new collection size: " + EST.activities.length);
 				obj.reset();
 			}
 		}

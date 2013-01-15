@@ -1,8 +1,9 @@
 
-EST.Filter = Backbone.Model.Extend({
+EST.Filter = Backbone.Model.extend({
+	
 	defaults: {
 		"onlyCurrentWeek": true
 		//"startDate": 
 		//"endDate":
-	}
+	}	
 });

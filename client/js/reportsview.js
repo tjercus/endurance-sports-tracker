@@ -12,16 +12,13 @@
 		initialize: function () {
 			var that = this;
 			this.collection.bind("reset", this.render, this);
-			this.collection.bind("add", this.render, this);
-			/*EST.bind("activities:changed", function() {
-				console.log("activities changed");
-			});*/
+			this.collection.bind("add", this.render, this);			
         },
 
 		render: function() {
 			var json = this.collection.getData();
 			var html = _.template(this.template, json);
-			console.log(html);
+			//console.log(html);
 			this.$el.html(html);
 
 			return this;
