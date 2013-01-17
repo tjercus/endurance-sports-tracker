@@ -64,9 +64,13 @@
 		*/
 		toDateObj: function(date) {
 			if (!_.isString(date)) { 
+				date.setHours(0);
+				date.setMinutes(0);
+				date.setSeconds(0);
+				date.setMilliseconds(0);
 				return date;
 			}
-			return new Date(date.substr(4, 4), parseInt(date.substr(2, 2)) - 1, date.substr(0, 2), 0, 0, 0);
+			return new Date(date.substr(4, 4), parseInt(date.substr(2, 2)) - 1, date.substr(0, 2), 0, 0, 0, 0);
 		},
 		
 		/**
@@ -80,23 +84,82 @@
 			if (date1Obj - date2Obj === 0) {
 				return true;
 			}
+			var week1 = this.getWeek(date1Obj);
+			var week2 = this.getWeek(date2Obj);
+			console.log("weken: " + week1.week + ", " + week2.week);
 			
-			// 1. determine week boundaries of first date
-			// 1.a get last sunday
-						
-			//var startDay = 0;
-			//var weekStart = new Date(date1Obj.getDate() - (7 + date1Obj.getDay() - startDay) % 7);
-			//var weekEnd = new Date(date1Obj.getDate() + (7 - date1Obj.getDay() - startDay) % 7);
-			var prevSunday = date1Obj.getDate() - date1Obj.getDay();
-			console.log("prevSunday: " + prevSunday + ", for " + date1Obj);
+			if (week1.year === week2.year) {
+				if (week1.week === week2.week) {
+					return true;
+				}
+			} else {
+				if ((week1.week == 52 || week1.week == 53) && week2.week == 1) {
+					return true;
+				}
+				if ((week2.week == 52 || week2.week == 53) && week1.week == 1) {
+					return true;
+				}
+			}			
 			
-			// 2. check if second date is betwee boundaries of first date
-			//if (date2Obj >= weekStart && date2Obj <= weekEnd) {
-			//	return true;
+			return false;
+		},
+		
+		/*
+		lastSunday: function(dateObj) {
+  			var d = new Date(dateObj.getFullYear(), dateObj.getMonth(), dateObj.getDay(), 0, 0, 0 ,0);
+  			console.log("lastSunday(): date: " + dateObj.getDate() + ", day: " + dateObj.getDay() + " = " + parseInt(dateObj.getDate() - dateObj.getDay()));
+  			d.setDate(d.getDate() - d.getDay());
+  			return d;
+		},
+		
+		nextSunday: function(dateObj) {
+  			var d = new Date(dateObj.getFullYear(), dateObj.getMonth(), dateObj.getDay(), 0, 0, 0 ,0);
+  			d.setDate((d.getDate() + 7) - d.getDay());
+  			return d;
+		},
+		*/
+		
+		/**
+		* Weeknr as needed for 
+		* @param date as Date
+		* @return week object with 'year' and 'week' int properties
+		*/
+		getWeek: function(d) {
+			// Copy date so don't modify original
+			d = new Date(d);
+			d.setHours(0, 0, 0);			
+			// Make Sunday's day number 0
+			d.setDate(d.getDate() - d.getDay());
+			// Get first day of year
+			var yearStart = new Date(d.getFullYear(), 0, 1);
+			// Calculate full weeks to nearest Thursday
+			var weekNo = Math.ceil(( ( (d - yearStart) / 86400000)) / 7);
+			
+			var year = d.getFullYear();
+			// if 1-st jan is not sunday, and date is before first jan, set year--;			
+			//if (d.getDate() < 6) {
+				//weekNo = 1;
+				//year--;
 			//}
 			
-			//console.log(date1Obj);
-			//console.log(date2Obj);
-			return false;
-		}		
+			// Return array of year and week number
+			return {"year": year, "week": weekNo};
+		}
+		
+		/* // works, but problem with first/last week
+		getWeek: function(d) {
+			// Copy date so don't modify original
+			d = new Date(d);
+			d.setHours(0,0,0);
+			// Set to nearest Thursday: current date + 4 - current day number
+			// Make Sunday's day number 0
+			d.setDate(d.getDate() + 4 - (d.getDay() || 0));
+			// Get first day of year
+			var yearStart = new Date(d.getFullYear(), 0, 1);
+			// Calculate full weeks to nearest Thursday
+			var weekNo = Math.ceil(( ( (d - yearStart) / 86400000) + 1)/7)
+			// Return array of year and week number
+			return {"year": d.getFullYear(), "week": weekNo};
+		}
+		*/
 	}
