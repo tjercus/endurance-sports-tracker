@@ -33,7 +33,7 @@ footer {
 	font-size: 1.0em;
 }
 td.numeric {
-	text-align: right;
+	text-align: auto;
 	/*padding-right: 8em;*/
 }
 

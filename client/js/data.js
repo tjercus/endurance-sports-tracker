@@ -160,29 +160,49 @@ EST.data = [
 	type: "running",
 	date: "12012013",
 	duration: EST.Datum.timeToSeconds("00:06:40"),
-	distance: 1080,
-	notes: "Easy"
+	distance: 1800,
+	notes: "Easy, to swimming pool"
 },
 {
 	type: "running",
-	date: "12012013",
+	date: "14012013",
 	duration: EST.Datum.timeToSeconds("01:32:14"),
 	distance: 19570,
 	notes: "Ruim onder MP"
 },
 {
 	type: "running",
-	date: "13012013",
+	date: "15012013",
 	duration: EST.Datum.timeToSeconds("00:06:10"),
 	distance: 1080,
-	notes: "Easy"
+	notes: "Easy, De Vink"
+},
+{
+	type: "running",
+	date: "15012013",
+	duration: EST.Datum.timeToSeconds("00:55:40"),
+	distance: 10080,
+	notes: "Easy, round the block"
+},
+{
+	type: "running",
+	date: "17012013",
+	duration: EST.Datum.timeToSeconds("00:05:09"),
+	distance: 1080,
+	notes: "Easy, De Vink"
+},
+{
+	type: "running",
+	date: "17012013",
+	duration: EST.Datum.timeToSeconds("00:57:30"),
+	distance: 13270,
+	notes: "Well below MP"
+},
+{
+	type: "running",
+	date: "18012013",
+	duration: EST.Datum.timeToSeconds("00:04:41"),
+	distance: 1080,
+	notes: "Easy, De Vink"
 }
 ];
-/*
-function fixData(act) {
-	console.log('fixData');
-	var dur = act.get("duration");
-	act.set("duration", EST.Datum.timeToSeconds(dur));
-}
-_.invoke(EST.Data, 'fixData');
-*/
