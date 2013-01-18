@@ -39,20 +39,22 @@ describe("EST.Datum", function() {
 			var nr = EST.Datum.lpad(1, 2);
 			expect(nr).toEqual('01');
 		});
-	});
-	
-	/*
+	});	
+
 	describe("#lastSunday", function() {
+		it("should return same day if a date is on a sunday", function() {
+			var _lastSunday = EST.Datum.lastSunday(new Date(2013, 0, 27));
+			expect(_lastSunday).toEqual(new Date(2013, 0, 27));
+		});
 		it("should return sunday for a date in regular week", function() {
-			var date = EST.Datum.lastSunday(new Date(2013, 0, 9));
-			expect(date).toEqual(new Date(2013, 0, 6));
+			var _lastSunday = EST.Datum.lastSunday(new Date(2013, 0, 9));
+			expect(_lastSunday).toEqual(new Date(2013, 0, 6));
 		});
 		it("should return sunday for a date in a previous year", function() {
-			var date = EST.Datum.lastSunday(new Date(2013, 0, 2));
-			expect(date).toEqual(new Date(2012, 11, 30));
+			var _lastSunday = EST.Datum.lastSunday(new Date(2013, 0, 2));
+			expect(_lastSunday).toEqual(new Date(2012, 11, 30));
 		});
 	});
-	*/
 	
 	describe("#sameWeek", function() {
 		it("should return true if same date", function() {
@@ -80,29 +82,10 @@ describe("EST.Datum", function() {
 			var date2 = "06012013";
 			expect(EST.Datum.sameWeek(date1, date2)).toBeFalsy();
 		});
-		it("should return false if two dates are on a sunday and after", function() {
+		it("should return true if two dates are on a sunday and after", function() {
 			var date1 = "06012013";
 			var date2 = "07012013";
 			expect(EST.Datum.sameWeek(date1, date2)).toBeTruthy();
 		});
-	});
-	
-	describe("#getWeek", function() {
-		//it("should return number for a week bridging two years", function() {
-			//var date = EST.Datum.lastSunday(new Date(2013, 0, 9));
-			//expect(date).toEqual(new Date(2013, 0, 6));
-		//});
-		it("should return weekObj for the first week", function() {
-			var weekObj = EST.Datum.getWeek(new Date(2013, 0, 2, 0, 0, 0, 0));
-			expect(weekObj).toEqual({"year": 2012, "week": 52});
-		});
-		it("should return weekObj for the last week ('30-12-2012')", function() {
-			var weekObj = EST.Datum.getWeek(new Date(2012, 11, 30, 0, 0, 0, 0));
-			expect(weekObj).toEqual({"year": 2012, "week": 52});
-		});
-		it("should return weekObj for a regular week", function() {
-			var weekObj = EST.Datum.getWeek(new Date(2013, 0, 8, 0, 0, 0, 0));
-			expect(weekObj).toEqual({"year": 2013, "week": 1});
-		});
-	});
+	});	
 });

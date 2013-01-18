@@ -1,12 +1,23 @@
 
+	/**
+	* Util class to work wih dates in the context of this app
+	* @author tjerk
+	*/
 	EST.Datum = {
 	
-		// @return current date as 12232012 (ddmmyyyy) 
+		/**
+		* @return current date as 12232012 (ddmmyyyy)
+		*/
 		createDate: function() {
 			return "" + this.lpad((new Date()).getDate(), 2) + "" + this.lpad(((new Date()).getMonth() + 1), 2) + "" + (new Date()).getFullYear();
 		},
 
-		// @todo add days
+		/**
+		* @param secs the number of seconds since 
+		* @param skipHours boolean to drop hours from result
+		* @return the time as calculated from a number of seconds, as "hh:mm:ss" or "mm:ss"
+		* @todo add days
+		*/
 		secondsToTime: function(secs, skipHours) {
 			var SEP = ":";
 			var hours = Math.floor(secs / (60 * 60));
@@ -24,6 +35,10 @@
 			return str;
 		},
 		
+		/**
+		* @param time as "hh:mm:ss"
+		* @return nr of seconds in time as int
+		*/
 		timeToSeconds: function(time) {
 			if (time === undefined || (time.indexOf(":") === -1)) {
 				return time;
@@ -49,6 +64,10 @@
 			return out;
 		},
 		
+		/**
+		* @param value is the value to pad
+		* @param padding is the size
+		*/
 		lpad: function(value, padding) {
 		    var zeroes = "0";
 
@@ -84,82 +103,30 @@
 			if (date1Obj - date2Obj === 0) {
 				return true;
 			}
-			var week1 = this.getWeek(date1Obj);
-			var week2 = this.getWeek(date2Obj);
-			console.log("weken: " + week1.week + ", " + week2.week);
 			
-			if (week1.year === week2.year) {
-				if (week1.week === week2.week) {
-					return true;
-				}
-			} else {
-				if ((week1.week == 52 || week1.week == 53) && week2.week == 1) {
-					return true;
-				}
-				if ((week2.week == 52 || week2.week == 53) && week1.week == 1) {
-					return true;
-				}
-			}			
+			var prevSunday1 = this.lastSunday(date1Obj);
+			var prevSunday2 = this.lastSunday(date2Obj);
+			
+			if (prevSunday1 - prevSunday2 == 0) {
+				return true;
+			}				
 			
 			return false;
-		},
-		
-		/*
-		lastSunday: function(dateObj) {
-  			var d = new Date(dateObj.getFullYear(), dateObj.getMonth(), dateObj.getDay(), 0, 0, 0 ,0);
-  			console.log("lastSunday(): date: " + dateObj.getDate() + ", day: " + dateObj.getDay() + " = " + parseInt(dateObj.getDate() - dateObj.getDay()));
-  			d.setDate(d.getDate() - d.getDay());
-  			return d;
-		},
-		
-		nextSunday: function(dateObj) {
-  			var d = new Date(dateObj.getFullYear(), dateObj.getMonth(), dateObj.getDay(), 0, 0, 0 ,0);
-  			d.setDate((d.getDate() + 7) - d.getDay());
-  			return d;
-		},
-		*/
+		},		
 		
 		/**
-		* Weeknr as needed for 
-		* @param date as Date
-		* @return week object with 'year' and 'week' int properties
+		* @param date obj
+		* @return the last sunday before the given date
 		*/
-		getWeek: function(d) {
-			// Copy date so don't modify original
-			d = new Date(d);
-			d.setHours(0, 0, 0);			
-			// Make Sunday's day number 0
-			d.setDate(d.getDate() - d.getDay());
-			// Get first day of year
-			var yearStart = new Date(d.getFullYear(), 0, 1);
-			// Calculate full weeks to nearest Thursday
-			var weekNo = Math.ceil(( ( (d - yearStart) / 86400000)) / 7);
-			
-			var year = d.getFullYear();
-			// if 1-st jan is not sunday, and date is before first jan, set year--;			
-			//if (d.getDate() < 6) {
-				//weekNo = 1;
-				//year--;
-			//}
-			
-			// Return array of year and week number
-			return {"year": year, "week": weekNo};
+		lastSunday: function(dateObj) {
+  			var prevSunday = new Date(dateObj.getFullYear(), dateObj.getMonth(), dateObj.getDate(), 0, 0, 0, 0);
+  			for (var i = 0; i < 6; i++) {
+  			 	if (prevSunday.getDay() === 0) {
+  			 		return prevSunday;
+  			 	} else {
+ 					prevSunday.setDate(prevSunday.getDate() - 1);
+  				}
+  			}  			
+  			return prevSunday;
 		}
-		
-		/* // works, but problem with first/last week
-		getWeek: function(d) {
-			// Copy date so don't modify original
-			d = new Date(d);
-			d.setHours(0,0,0);
-			// Set to nearest Thursday: current date + 4 - current day number
-			// Make Sunday's day number 0
-			d.setDate(d.getDate() + 4 - (d.getDay() || 0));
-			// Get first day of year
-			var yearStart = new Date(d.getFullYear(), 0, 1);
-			// Calculate full weeks to nearest Thursday
-			var weekNo = Math.ceil(( ( (d - yearStart) / 86400000) + 1)/7)
-			// Return array of year and week number
-			return {"year": d.getFullYear(), "week": weekNo};
-		}
-		*/
 	}

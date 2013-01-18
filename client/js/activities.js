@@ -42,21 +42,20 @@
 			};			
 		},
 		
-		applyFilters: function(filter) {
-			if (this.length <= 1) {
-				this.reset(EST.activities);
-			}
+		applyFilters: function(filter) {			
+			// @todo fix reset
+			//this.reset(EST.activities);
+			
 			// @todo read filter model object, and apply all filters on same cumulative array
 			var filtered = [];
-			this.each(function(act) {
-				//console.log("blah: " + act.get('date'));
+			this.each(function(act) {				
 				if (EST.Datum.sameWeek(EST.Datum.createDate(), act.get("date"))) {
 					filtered.push(act);
 				}
 			});
 			this.reset(filtered);
 			
-			console.log("experimental filter is being applied");
+			console.log("filter is being applied");
 		},
 		
 		comparator: function(item) {

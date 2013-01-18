@@ -5,19 +5,28 @@ EST.FilterFormView = Backbone.View.extend({
 	template: '<h2>Filters</h2><div class="control-group"><label class="checkbox"><input type="checkbox" id="onlycurrentweek" /> Current week</label></div>',
 	
 	events: {
-		"change #onlycurrentweek": "handleOnlyCurrentWeekChange"
+		"change #onlycurrentweek": "handleOnlyCurrentWeekViewChange"
 	},
 	
 	initialize: function() {
 		// @todo pehaps use backbone.modelbinder
-		_.bindAll(this, "handleOnlyCurrentWeekChange");
+		_.bindAll(this, "handleOnlyCurrentWeekViewChange");
+		//this.model.on("change", this.handleOnlyCurrentWeekModelChange, this);
+		EST.trigger("filter:changed", {"onlyCurrentWeek": true});
 	},
 	
-	handleOnlyCurrentWeekChange: function(evt) {
-		console.log("toggle only current week");
-		this.model.set({"onlyCurrentWeek": true}); // @todo use the actual state from input field
+	handleOnlyCurrentWeekViewChange: function(evt) {
+		this.model.set({"onlyCurrentWeek": $("#onlycurrentweek").is(":checked")});
 		EST.trigger("filter:changed", this.model);
 	},
+	
+	/*
+	handleOnlyCurrentWeekModelChange: function(evt) {
+		var icw = this.model.get("onlyCurrentWeek");
+		console.log("onlyCurrentWeek: " + icw);
+		$("#onlycurrentweek").attr("checked", icw);
+	},
+	*/
 	
 	render: function() {
 		this.$el.html(this.template);
