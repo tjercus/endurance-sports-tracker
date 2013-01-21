@@ -37,7 +37,7 @@
 				'distance': (totalDistance / 1000) + "km",
 				'duration': EST.Datum.secondsToTime(totalDuration),
 				'averagePace': EST.Datum.secondsToTime( totalDuration / (totalDistance / 1000), true ),
-				'averageDistance': ((totalDistance / this.length) / 1000).toFixed(2) + "km",
+				'averageDistance': (((totalDistance / this.length) / 1000) || 0).toFixed(2) + "km",
 				'averageDuration': EST.Datum.secondsToTime(totalDuration / this.length),
 			};			
 		},
