@@ -5,5 +5,9 @@ EST.Filter = Backbone.Model.extend({
 		"onlyCurrentWeek": true
 		//"startDate": 
 		//"endDate":
+	},
+
+	initialize: function(evt) {	
+		this.set({"onlyCurrentWeek": true});
 	}	
 });

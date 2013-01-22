@@ -36,5 +36,6 @@
 			// set default panel state
 			EST.trigger("navigation:changed", "activities");
 			//EST.trigger("activities:changed", EST.activities);
+			EST.trigger("filter:changed", {"onlyCurrentWeek": true});
 		}
 	});

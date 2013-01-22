@@ -2,14 +2,14 @@
 	EST.Activities = Backbone.Collection.extend({
 		url: "activities.groovy",
 		model: EST.Activity,
-						
+
 		initialize: function(models, options) {
-			var that = this;			
-			
+			var that = this;
+
 			if (options && options.shouldFilter) {
 				// applicable for the filtered activities collection
 				EST.bind("filter:changed", function(filter) {
-					console.log("EST.Activities caught filter:changed");
+					console.log("EST.Activities caught filter:changed " + filter.onlyCurrentWeek);
 					that.applyFilters(filter);
 				});
 				EST.bind("activities:changed", function(activities) {
@@ -25,7 +25,7 @@
 			}
 		},
 
-		getData: function() {			
+		getData: function() {
 			var totalDistance = 0;
 			var totalDuration = 0;
 			this.each(function (act) {
@@ -39,23 +39,23 @@
 				'averagePace': EST.Datum.secondsToTime( totalDuration / (totalDistance / 1000), true ),
 				'averageDistance': (((totalDistance / this.length) / 1000) || 0).toFixed(2) + "km",
 				'averageDuration': EST.Datum.secondsToTime(totalDuration / this.length),
-			};			
+			};
 		},
-		
-		applyFilters: function(filter) {			
-			// @todo fix reset
-			//this.reset(EST.activities);
-			
-			// @todo read filter model object, and apply all filters on same cumulative array
+
+		applyFilters: function(filter) {
+			console.log("applyFilters: starting with: " + EST.activities.models.length + ", onlyCurrentWeek: " + filter.onlyCurrentWeek);			
 			var filtered = [];
-			this.each(function(act) {				
-				if (EST.Datum.sameWeek(EST.Datum.createDate(), act.get("date"))) {
-					filtered.push(act);
-				}
-			});
-			this.reset(filtered);
+
+			if (filter.onlyCurrentWeek) {			
+				 EST.activities.each(function(act) {
+					if (EST.Datum.sameWeek(EST.Datum.createDate(), act.get("date"))) {
+						filtered.push(act);
+					}
+				});
+				console.log("onlyCurrentWeek filter is being applied");
+			}
 			
-			console.log("filter is being applied");
+			this.reset(filtered || EST.activities);
 		},
 		
 		comparator: function(item) {
