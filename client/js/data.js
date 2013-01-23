@@ -225,5 +225,19 @@ EST.data = [
 	duration: EST.Datum.timeToSeconds("01:30:15"),
 	distance: 19570,
 	notes: "Net onder MP"
+},
+{
+	type: "running",
+	date: "22012013",
+	duration: EST.Datum.timeToSeconds("00:07:08"),
+	distance: 1080,
+	notes: "Easy, De Vink"
+},
+{
+	type: "running",
+	date: "22012013",
+	duration: EST.Datum.timeToSeconds("00:30:00"),
+	distance: 6300,
+	notes: "Below MP"
 }
 ];
