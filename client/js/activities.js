@@ -43,7 +43,7 @@
 		},
 
 		applyFilters: function(filter) {
-			console.log("applyFilters: starting with: " + EST.activities.models.length + ", onlyCurrentWeek: " + filter.onlyCurrentWeek);			
+			console.log("applyFilters: starting with: " + EST.activities.models.length + ", onlyCurrentWeek: " + filter.onlyCurrentWeek);
 			var filtered = [];
 
 			if (filter.onlyCurrentWeek) {			
@@ -53,9 +53,11 @@
 					}
 				});
 				console.log("onlyCurrentWeek filter is being applied");
+			} else {
+				filtered = EST.activities.models;
 			}
 			
-			this.reset(filtered || EST.activities);
+			this.reset(filtered);			
 		},
 		
 		comparator: function(item) {
