@@ -13,7 +13,7 @@ describe("EST.ActivityListItemView", function() {
 			view.model = model;
 			var el = view.render().el;
 
-			expect($(el).html()).toEqual("<td><a>10-11-2012</a></td><td>running</td><td class=\"numeric\">12</td><td>00:36:40</td><td>03:04</td>");
+			expect($(el).html()).toEqual("<td><a>10-11-2012</a></td><td>running</td><td class=\"numeric\">12</td><td>00:36:40</td><td>03:04</td><td>164</td>");
 		});
 		
 	});

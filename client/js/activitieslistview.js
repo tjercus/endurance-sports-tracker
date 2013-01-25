@@ -3,7 +3,7 @@
 		tagName: "table",
 		className: "table table-striped",
 		
-		theadTemplate: "<thead><tr><th>Date</th><th>Type</th><th>Distance (km)</th><th>Duration</th><th>Pace</th></tr></thead><tbody>",
+		theadTemplate: "<thead><tr><th>Date</th><th>Type</th><th>Distance (km)</th><th>Duration</th><th>Pace</th><th>Relative pace</th></tr></thead><tbody>",
 		tfootTemplate: "</tbody>",
 
 		initialize: function () {

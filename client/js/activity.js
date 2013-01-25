@@ -49,10 +49,21 @@ EST.Activity = Backbone.Model.extend({
 		getDurationFormatted: function () {
 			return EST.Datum.secondsToTime(this.get("duration"));
 		},
+
+		/**
+		* in seconds (per minute)
+		*/
+		getPace: function() {
+			return this.get("duration") / (this.get("distance") / 1000);
+		},
 		
 		getPaceFormatted: function() {
-			return EST.Datum.secondsToTime( this.get("duration") / (this.get("distance") / 1000), true );
-		},		
+			return EST.Datum.secondsToTime(this.getPace(), true);
+		},
+
+		getRelativePaceFormatted: function() {
+			return Math.round(300 / (this.getPace() / 100));
+		},
 
 		toJSONFormatted: function() {
 			return {
@@ -60,7 +71,8 @@ EST.Activity = Backbone.Model.extend({
 				"type": this.get("type"), 
 				"distance": this.getDistanceFormatted(), 
 				"duration": this.getDurationFormatted(), 
-				"pace": this.getPaceFormatted()
+				"pace": this.getPaceFormatted(),
+				"relativePace": this.getRelativePaceFormatted()
 			};
 		}
 });
