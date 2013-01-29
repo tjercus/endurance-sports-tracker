@@ -26,7 +26,10 @@
 			$(EST.reportsPanel.el).append(EST.reportsView.render().el);
 			$(EST.reportsPanel.el).append(EST.filterFormView.render().el);
 			$(EST.reportsPanel.el).append(EST.reportsFilteredView.render().el);
+			//$(EST.reportsPanel.el).append("<div id='chart'></div>");
 
+			// @todo more elegant way to append chart to DOM
+			//$(EST.reportsPanel.el).append("<div id='chart'></div>");
 			console.log("AppView.init. views rendered and added to panels");
 
 			EST.navBar = new EST.NavBarView({
