@@ -281,5 +281,40 @@ EST.data = [
 	duration: EST.Datum.timeToSeconds("00:07:51"),
 	distance: 1080,
 	notes: "Easy, De Vink"
+},
+{
+	type: "running",
+	date: "31012013",
+	duration: EST.Datum.timeToSeconds("00:05:38"),
+	distance: 1080,
+	notes: "Easy, De Vink"
+},
+{
+	type: "running",
+	date: "31012013",
+	duration: EST.Datum.timeToSeconds("00:55:01"),
+	distance: 13270,
+	notes: "Near 10K pace"
+},
+{
+	type: "running",
+	date: "02022013",
+	duration: EST.Datum.timeToSeconds("00:12:00"),
+	distance: 1800,
+	notes: "Easy, to swimming pool"
+},
+{
+	type: "running",
+	date: "04022013",
+	duration: EST.Datum.timeToSeconds("02:03:49"),
+	distance: 24470,
+	notes: "Long run, just above MP"
+},
+{
+	type: "running",
+	date: "05022013",
+	duration: EST.Datum.timeToSeconds("00:05:38"),
+	distance: 1080,
+	notes: "Easy, De Vink"
 }
 ];
